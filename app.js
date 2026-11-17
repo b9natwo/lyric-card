@@ -533,8 +533,8 @@ downloadBtn.addEventListener("click", downloadCard);
 window.addEventListener("resize", () => requestAnimationFrame(fitPreviewFont));
 
 // Seed
-lyricsInput.value = "Sleep, I ain't never had affairs with that";
-titleInput.value = "Count Me Out";
-artistInput.value = "Kendrick Lamar";
+lyricsInput.value = "";
+titleInput.value = "Untitled";
+artistInput.value = "";
 setTheme("classic");
 updatePreview();
