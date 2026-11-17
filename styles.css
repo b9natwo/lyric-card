@@ -304,7 +304,6 @@ input[type="range"] {
   min-width: 0;
 }
 
-/* DISTROUBLED logo with 45° black shadow (Genius-style) */
 .lyric-card-footer .brand-logo {
   flex-shrink: 0;
   font-size: clamp(10px, 1.75vw, 14px);
@@ -315,6 +314,10 @@ input[type="range"] {
   text-shadow:
     1px 1px 0 #000,
     2px 2px 0 #000;
+}
+
+#cardLogo {
+  text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Theme tokens ── */
