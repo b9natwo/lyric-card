@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyric Card Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">LC</span>
+        <div>
+          <strong>Lyric Card Studio</strong>
+          <small>Custom lyric cards</small>
+        </div>
+      </div>
+      <button type="button" id="downloadBtn" class="btn btn-primary" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PNG
+      </button>
+    </header>
+
+    <main class="workspace">
+      <aside class="panel controls">
+        <section class="control-group">
+          <label for="lyricsInput">Lyrics</label>
+          <p class="hint">One line per white pill · max 8 lines</p>
+          <textarea id="lyricsInput" rows="7" placeholder="Paste or type the lyric lines…" spellcheck="false"></textarea>
+        </section>
+
+        <section class="control-group">
+          <label for="titleInput">Song title</label>
+          <input id="titleInput" type="text" placeholder='e.g. Count Me Out' autocomplete="off" />
+        </section>
+
+        <section class="control-group">
+          <label for="artistInput">Artist</label>
+          <input id="artistInput" type="text" placeholder="e.g. Kendrick Lamar" autocomplete="off" />
+        </section>
+
+        <section class="control-group">
+          <label>Background photo</label>
+          <div class="bg-tools">
+            <button type="button" id="uploadBgBtn" class="btn btn-outline">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload image
+            </button>
+            <button type="button" id="clearBgBtn" class="btn btn-ghost" hidden>Remove</button>
+            <input type="file" id="bgFileInput" accept="image/*" hidden />
+          </div>
+          <div class="link-row">
+            <input id="bgLinkInput" type="url" placeholder="Or paste an image URL…" />
+            <button type="button" id="useLinkBtn" class="btn btn-outline">Use link</button>
+          </div>
+          <p id="bgWarning" class="warning" hidden></p>
+        </section>
+
+        <section class="control-group">
+          <label>Theme</label>
+          <div class="theme-grid" id="themeGrid">
+            <button type="button" class="theme-swatch active" data-theme="classic" title="Classic">
+              <span class="swatch-preview classic"></span>
+              <span>Classic</span>
+            </button>
+            <button type="button" class="theme-swatch" data-theme="midnight" title="Midnight">
+              <span class="swatch-preview midnight"></span>
+              <span>Midnight</span>
+            </button>
+            <button type="button" class="theme-swatch" data-theme="paper" title="Paper">
+              <span class="swatch-preview paper"></span>
+              <span>Paper</span>
+            </button>
+            <button type="button" class="theme-swatch" data-theme="neon" title="Neon">
+              <span class="swatch-preview neon"></span>
+              <span>Neon</span>
+            </button>
+            <button type="button" class="theme-swatch" data-theme="gold" title="Gold">
+              <span class="swatch-preview gold"></span>
+              <span>Gold</span>
+            </button>
+            <button type="button" class="theme-swatch" data-theme="rose" title="Rose">
+              <span class="swatch-preview rose"></span>
+              <span>Rose</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="control-group">
+          <label for="overlayRange">Photo overlay</label>
+          <input type="range" id="overlayRange" min="0" max="60" value="20" />
+          <p class="hint">Darken the photo so pills stay readable</p>
+        </section>
+      </aside>
+
+      <section class="panel preview-panel">
+        <div class="preview-label">Live preview · 1080 × 1080 export</div>
+        <div class="card-stage">
+          <div id="lyricCard" class="lyric-card theme-classic">
+            <div id="cardScrim" class="lyric-card-scrim" hidden></div>
+            <div class="lyric-card-content">
+              <div class="lyric-card-quote-box" id="cardLinesBox">
+                <div class="lyric-card-lines" id="cardLines"></div>
+              </div>
+              <div class="lyric-card-footer">
+                <span class="credit" id="cardCredit">ARTIST, "SONG TITLE"</span>
+                <span class="brand-logo" id="cardLogo">DISTROUBLED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="exportStatus" class="export-status"></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
